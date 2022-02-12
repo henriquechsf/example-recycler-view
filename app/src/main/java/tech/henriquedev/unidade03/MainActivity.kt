@@ -1,9 +1,13 @@
 package tech.henriquedev.unidade03
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ArrayAdapter
+import android.widget.Button
 import android.widget.ListView
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 
 /**
  * List + Adapter
@@ -11,23 +15,28 @@ import android.widget.ListView
  * 1. Lista xml > 2. dados tipo List > 3. Adapter
  */
 class MainActivity : AppCompatActivity() {
+    lateinit var btnCustomList: Button
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        // lista
-        val listView = findViewById<ListView>(R.id.list_view)
+        val userList = mutableListOf<User>()
+        for (i in 1..200) {
+            userList.add(
+                User(
+                    id = i,
+                    name = "Nome $i",
+                    age = 30 + i
+                )
+            )
+        }
 
         // dados
-        val data = listOf<String>("Umuarama", "Maringa", "Cascavel", "Curitiba")
-
+        // recycler view + item da lista
         // adapter
-        val adapter = ArrayAdapter<String>(
-            this,
-            android.R.layout.simple_list_item_1,
-            data
-        )
-
-        listView.adapter = adapter
+        val recyclerView: RecyclerView = findViewById(R.id.recycler_view)
+        recyclerView.adapter = RecyclerVIewAdapter(userList)
+        recyclerView.layoutManager = LinearLayoutManager(this)
     }
 }
