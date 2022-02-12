@@ -10,6 +10,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Unidade03">
         <activity
+            android:name=".SharedPreference"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
             android:name=".ListActivity"
             android:exported="false" />
         <activity

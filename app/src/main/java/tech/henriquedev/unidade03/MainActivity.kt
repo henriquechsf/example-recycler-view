@@ -15,8 +15,6 @@ import androidx.recyclerview.widget.RecyclerView
  * 1. Lista xml > 2. dados tipo List > 3. Adapter
  */
 class MainActivity : AppCompatActivity() {
-    lateinit var btnCustomList: Button
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
